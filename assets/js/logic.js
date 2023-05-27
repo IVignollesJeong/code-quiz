@@ -81,7 +81,7 @@ function getQuestion() {
 
   // update title with current question
   var titleEl = document.getElementById('question-title');
-  titleEl.textContent = currentQuestion.title; //think dot notation
+  titleEl.textContent = currentQuestion.title;
 
   // clear out any old question choices
   choicesEl.innerHTML = '';
@@ -173,10 +173,9 @@ function quizEnd() {
 }
 
 function clockTick() {
-  // update time
   // decrement the variable we are using to track time
   time--;
-  timerEl.textContent = time; // update out time
+  timerEl.textContent = time;
 
   // check if user ran out of time
   if (time <= 0) {
@@ -194,7 +193,7 @@ function saveHighscore() {
     // get saved scores from localstorage, or if not any, set to empty array
     
     var highscores =
-      JSON.parse(window.localStorage.getItem('highscores')) /* what would go inside the PARSE??*/ || [];
+      JSON.parse(window.localStorage.getItem('highscores')) || [];
 
     // format new score object for current user
     var newScore = {
