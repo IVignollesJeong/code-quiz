@@ -21,7 +21,7 @@ Source code for the portfolio page can be found here: [Code Quiz HTML](https://g
 ![CodeQuiz](https://github.com/IVignollesJeong/code-quiz/assets/131202032/5304d4fc-881a-42de-8e1a-e7e61cc21414)
 
 
-[Code Quiz]()
+[Code Quiz](https://ivignollesjeong.github.io/code-quiz/)
 
 The application functions as follows:
 
