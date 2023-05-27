@@ -101,6 +101,61 @@ function getQuestion() {
   }
 }
 
+function questionClick(event) {
+  var buttonEl = event.target;
+
+  // if the clicked element is not a choice button, do nothing.
+  if (!buttonEl.matches('.choice')) {
+    return;
+  }
+
+  // check if user guessed wrong
+  if (buttonEl.value !== questions[currentQuestionIndex].answer) {
+    // penalize time
+    time -= 15;
+
+    if (time < 0) {
+      time = 0;
+    }
+    
+    // display new time on page
+    timerEl.textContent = time;
+
+
+    // play wrong sfx
+    sfxWrong.play();
+
+
+    //flash wrong feedback
+    feedbackEl.textContent = 'Wrong! :(';
+  } else {
+
+
+    // play right sfx
+    sfxRight.play();
+
+
+    //flash right feedback
+    feedbackEl.textContent = 'Correct, WOO!';
+  }
+
+  //flash feedback for a second
+  feedbackEl.setAttribute('class', 'feedback');
+  setTimeout(() => {
+    feedbackEl.setAttribute('class', 'feedback hide');
+  }, 1000);
+  
+
+ // move to next question
+  currentQuestionIndex++;
+  
+  // check if we've run out of questions or if time ran out?
+  if (time <= 0 || currentQuestionIndex === questions.length) {
+    quizEnd();
+  } else {
+    getQuestion();
+  }
+}
 
 function quizEnd() {
   // stop timer
@@ -172,4 +227,5 @@ startBtn.onclick = startQuiz;
 // user clicks on element containing choices
 choicesEl.onclick = questionClick;
 
+// submits the initials form upon releasing enter (essentially hitting the enter key normally)
 initialsEl.onkeyup = checkForEnter;
